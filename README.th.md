@@ -85,46 +85,18 @@ $env:PLUGIN_SCOPE="user"; powershell -ExecutionPolicy Bypass -File setup.ps1
 
 ### เอาแค่ปลั๊กอิน devenv-doctor ไม่เอา bootstrap ทั้งชุด
 
-มี Claude Code อยู่แล้ว อยากได้แค่ปลั๊กอิน: โหลด repo มาก่อน — `git clone` หรือกด **Code → Download ZIP** แล้วแตกไฟล์ ทางไหนก็ได้ แต่โฟลเดอร์ที่คุณยืนอยู่ต้องเป็นโฟลเดอร์ที่มี `.claude-plugin/` อยู่ข้างใน:
+มี Claude Code **กับ git** อยู่แล้ว อยากได้แค่ปลั๊กอิน ไม่ต้อง clone เอง ไม่ต้องโหลด ZIP ไม่ต้อง `cd` ไปไหน:
 
 ```
-cc-devenv-doctor/           <- เปิด terminal ตรงนี้
-├── .claude-plugin/
-│   └── marketplace.json    <- ไฟล์ที่ `marketplace add` อ่าน
-├── devenv-doctor/          <- ตัวปลั๊กอิน
-│   ├── .claude-plugin/plugin.json
-│   └── skills/environment-doctor/SKILL.md
-├── setup.sh
-└── setup.ps1
-```
-
-ZIP จาก GitHub แตกออกมาชื่อ **`cc-devenv-doctor-main`** ไม่ใช่ `cc-devenv-doctor` และโปรแกรมแตกไฟล์บางตัวซ้อนให้อีกชั้น (`cc-devenv-doctor-main/cc-devenv-doctor-main/`) เช็คก่อนว่ายืนถูกที่ — คำสั่งนี้ต้องเจอไฟล์ ไม่ใช่ error:
-
-```bash
-ls .claude-plugin/marketplace.json     # macOS
-```
-```powershell
-dir .claude-plugin\marketplace.json    # Windows
-```
-
-จากโฟลเดอร์เดียวกันนั้น สองคำสั่ง ไม่ต้องเปิดเซสชัน Claude Code:
-
-```
-claude plugin marketplace add ./
+claude plugin marketplace add killernay/cc-devenv-doctor
 claude plugin install devenv-doctor
 ```
 
-`./` ต้องมี slash ปิดท้าย ถ้าใส่ `.` เฉย ๆ จะขึ้น *"Invalid marketplace source format"* — ค่า default ติดตั้งเป็น scope **user** คือใช้ได้ทุกโปรเจกต์บนเครื่องนี้ ถ้าอยากจำกัดแค่โฟลเดอร์เดียว ดู[คำถามเรื่อง scope](#คำถามเดียวที่สคริปต์จะถาม)
+แล้วเปิด `claude` พิมพ์ `/devenv-doctor:environment-doctor` จบ — ติดตั้งเป็น scope **user** คือใช้ได้ทุกโปรเจกต์บนเครื่องนี้ ถ้าอยากจำกัดแค่โฟลเดอร์เดียว ดู[คำถามเรื่อง scope](#คำถามเดียวที่สคริปต์จะถาม)
 
-ในเซสชันที่เปิดอยู่แล้วก็ใช้ `/plugin marketplace add ./` กับ `/plugin install devenv-doctor` ได้เหมือนกัน
+`marketplace add` เรียก `git clone` ข้างใน เครื่องต้องมี git ไม่งั้นขึ้น *"Failed to clone marketplace repository"* — ถ้ายังไม่มี git ให้รันสคริปต์ setup ด้านบนแทน มันลง git ให้ด้วย
 
-เรียกใช้:
-
-```
-/devenv-doctor:environment-doctor
-```
-
-**ถ้าตอนติดตั้งมีเซสชัน Claude Code เปิดค้างอยู่ ต้อง `/reload-plugins` ก่อน** เพราะปลั๊กอินถูกสแกนตอนเปิดเซสชัน เซสชันที่เปิดใหม่หลังติดตั้งไม่ต้องทำ ไม่แน่ใจว่าโหลดหรือยัง พิมพ์ `/` แล้วดูในลิสต์
+ถ้าตอนติดตั้งมีเซสชัน Claude Code เปิดค้างอยู่ ให้ `/reload-plugins` ก่อน เพราะปลั๊กอินถูกสแกนตอนเปิดเซสชัน เซสชันที่เปิดใหม่หลังติดตั้งไม่ต้องทำ
 
 ### ถอนออกยังไง
 

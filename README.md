@@ -85,46 +85,24 @@ $env:PLUGIN_SCOPE="user"; powershell -ExecutionPolicy Bypass -File setup.ps1
 
 ### Just want the devenv-doctor plugin, not the full bootstrap?
 
-Already have Claude Code and only want the plugin? Get the repo — `git clone`, or **Code → Download ZIP** and extract it. Either way, the folder you end up standing in has to be the one that holds `.claude-plugin/`:
+Already have Claude Code **and git**? Two commands. No clone, no ZIP, no `cd` — `marketplace add` does the clone for you:
 
 ```
-cc-devenv-doctor/           <- open your terminal HERE
-├── .claude-plugin/
-│   └── marketplace.json    <- this is the file `marketplace add` reads
-├── devenv-doctor/          <- the plugin itself
-│   ├── .claude-plugin/plugin.json
-│   └── skills/environment-doctor/SKILL.md
-├── setup.sh
-└── setup.ps1
-```
-
-The ZIP from GitHub extracts as **`cc-devenv-doctor-main`**, not `cc-devenv-doctor`, and some unzip tools nest it one level deeper (`cc-devenv-doctor-main/cc-devenv-doctor-main/`). Confirm you're in the right folder first — this has to print the file, not an error:
-
-```bash
-ls .claude-plugin/marketplace.json     # macOS
-```
-```powershell
-dir .claude-plugin\marketplace.json    # Windows
-```
-
-Then, from that same folder, two commands — no Claude Code session needed:
-
-```
-claude plugin marketplace add ./
+claude plugin marketplace add killernay/cc-devenv-doctor
 claude plugin install devenv-doctor
 ```
 
-The trailing slash in `./` matters: a bare `.` is rejected with *"Invalid marketplace source format"*. The install goes to **user** scope by default, meaning every project on this machine; see [the scope question](#one-question-the-script-asks-you) if you want it limited to one folder.
-
-The same thing works inside a running session as `/plugin marketplace add ./` and `/plugin install devenv-doctor`.
-
-Then run it:
+Then open `claude` and run:
 
 ```
 /devenv-doctor:environment-doctor
 ```
 
-**If you had a Claude Code session open while installing, run `/reload-plugins` first** — plugins are scanned at session start, so a session that was already running doesn't know about the new one yet. A session started *after* the install picks it up on its own. Not sure whether it loaded? Type `/` and look for it in the list.
+That's it. It installs to **user** scope, so it works in every project on this machine.
+
+`marketplace add` shells out to `git clone`, so git has to be installed — without it you get *"Failed to clone marketplace repository"*. No git yet? Run the setup script above instead; it installs git along the way.
+
+If a Claude Code session was already open while you installed, run `/reload-plugins` first — plugins are scanned at session start. A session started *after* the install picks it up on its own.
 
 ### Removing it again
 
@@ -137,14 +115,18 @@ Uninstall takes the full `name@marketplace` id — that's what `claude plugin li
 
 #### ภาษาไทย
 
-มี Claude Code อยู่แล้ว อยากได้แค่ปลั๊กอิน ไม่เอา bootstrap ทั้งชุด:
+มี Claude Code **กับ git** อยู่แล้ว อยากได้แค่ปลั๊กอิน ไม่ต้อง clone เอง ไม่ต้องโหลด ZIP ไม่ต้อง `cd` ไปไหน:
 
-1. โหลด repo — `git clone` หรือกด **Code → Download ZIP** แล้วแตกไฟล์
-2. **ต้องยืนอยู่ในโฟลเดอร์ที่มี `.claude-plugin/` อยู่ข้างใน** (โฟลเดอร์เดียวกับที่มี `setup.sh`) ตามโครงสร้างด้านบน — ZIP จาก GitHub แตกออกมาชื่อ **`cc-devenv-doctor-main`** และโปรแกรมแตกไฟล์บางตัวซ้อนให้อีกชั้น เช็คก่อนด้วย `ls .claude-plugin/marketplace.json` (macOS) หรือ `dir .claude-plugin\marketplace.json` (Windows) ต้องเจอไฟล์ ไม่ใช่ error
-3. เปิด terminal ในโฟลเดอร์นั้น แล้วรัน `claude plugin marketplace add ./` ต่อด้วย `claude plugin install devenv-doctor` (ไม่ต้องเปิดเซสชัน Claude Code ก็ได้ หรือจะใช้ `/plugin marketplace add ./` ในเซสชันก็ได้เหมือนกัน)
-4. เรียกใช้ด้วย `/devenv-doctor:environment-doctor` — **ถ้าตอนติดตั้งมีเซสชัน Claude Code เปิดค้างอยู่ ต้อง `/reload-plugins` ก่อน** เพราะปลั๊กอินถูกสแกนตอนเปิดเซสชัน เซสชันที่เปิดใหม่หลังติดตั้งไม่ต้องทำ ไม่แน่ใจว่าโหลดหรือยัง พิมพ์ `/` แล้วดูในลิสต์
+```
+claude plugin marketplace add killernay/cc-devenv-doctor
+claude plugin install devenv-doctor
+```
 
-`./` ต้องมี slash ปิดท้าย ถ้าใส่ `.` เฉย ๆ จะขึ้น *"Invalid marketplace source format"* — ค่า default ติดตั้งเป็น scope **user** คือใช้ได้ทุกโปรเจกต์บนเครื่องนี้
+แล้วเปิด `claude` พิมพ์ `/devenv-doctor:environment-doctor` จบ — ติดตั้งเป็น scope **user** คือใช้ได้ทุกโปรเจกต์บนเครื่องนี้
+
+`marketplace add` เรียก `git clone` ข้างใน เครื่องต้องมี git ไม่งั้นขึ้น *"Failed to clone marketplace repository"* — ถ้ายังไม่มี git ให้รันสคริปต์ setup ด้านบนแทน มันลง git ให้ด้วย
+
+ถ้าตอนติดตั้งมีเซสชัน Claude Code เปิดค้างอยู่ ให้ `/reload-plugins` ก่อน เพราะปลั๊กอินถูกสแกนตอนเปิดเซสชัน เซสชันที่เปิดใหม่หลังติดตั้งไม่ต้องทำ
 
 ถอนออก:
 
