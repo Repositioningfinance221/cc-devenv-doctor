@@ -30,7 +30,7 @@ without stopping to ask. Never assume a result — always run the real command.
 - `claude --version`
 - `test -d ~/.claude-mem` (indicates claude-mem is installed)
 - `claude plugin list` to see which plugins are installed, and `claude plugin marketplace list` to see which marketplaces are registered
-- `code --list-extensions` and check for the recommended set: `anthropic.claude-code`, `eamodio.gitlens`, `ms-azuretools.vscode-docker`, `dbaeumer.vscode-eslint`, `esbenp.prettier-vscode`
+- `code --list-extensions` and check for the recommended set: `anthropic.claude-code`, `ms-azuretools.vscode-docker`
 
 Summarize the results as a ✅/❌ table before suggesting any fixes.
 
@@ -60,7 +60,7 @@ Summarize the results as a ✅/❌ table before suggesting any fixes.
 A plugin that "installed fine" but does nothing is nearly always one of these two:
 
 - **Installed into the wrong scope.** `--scope project` writes `.claude/settings.json` into the folder it was run from, so the plugin only loads inside that folder. If they ran the bootstrap script from a downloads folder, that's the bug. Check `claude plugin list`, then reinstall with `--scope user` to make it available everywhere.
-- **The marketplace was never added.** `claude plugin install <name>@<marketplace>` can only resolve `@<marketplace>` if that marketplace is registered. Check `claude plugin marketplace list` first. For plugins from this repo: `claude plugin marketplace add .` (run from the repo root), then `claude plugin install devenv-doctor --scope user`.
+- **The marketplace was never added.** `claude plugin install <name>@<marketplace>` can only resolve `@<marketplace>` if that marketplace is registered. Check `claude plugin marketplace list` first. For plugins from this repo: `claude plugin marketplace add ./` (run from the repo root — the folder holding `.claude-plugin/marketplace.json`; a bare `.` is rejected as "Invalid marketplace source format"), then `claude plugin install devenv-doctor --scope user`.
 
 Note: the CLI command is `claude plugin install` (singular "plugin"); a common typo is `claude plugins install` (plural), which fails.
 

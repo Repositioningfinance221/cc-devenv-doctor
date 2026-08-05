@@ -107,10 +107,10 @@ fi
 
 # --- VS Code extensions ---
 if has code; then
-  for ext in anthropic.claude-code eamodio.gitlens ms-azuretools.vscode-docker dbaeumer.vscode-eslint esbenp.prettier-vscode; do
+  for ext in anthropic.claude-code ms-azuretools.vscode-docker; do
     code --install-extension "$ext" --force >/dev/null 2>&1
   done
-  report "VS Code extensions" 1 "(Claude Code, GitLens, Docker, ESLint, Prettier)"
+  report "VS Code extensions" 1 "(Claude Code, Docker)"
 else
   report "VS Code extensions" 0 "skipped — 'code' not found"
 fi
@@ -177,4 +177,4 @@ echo ""
 echo "If 'Bun' shows [!] above, fix that BEFORE step 2 — claude-mem installs fine without Bun and then silently does nothing, because its hooks and worker run on Bun. Install it with: brew install bun"
 echo ""
 echo "If 'devenv-doctor plugin' or 'mattpocock-skills' show [!] above, that's almost always because you weren't logged in yet on this run — log in, then re-run this script; it will skip what already succeeded."
-echo "Once everything passes, try typing 'check my setup' in Claude Code — devenv-doctor will diagnose itself."
+echo "Once everything passes, open Claude Code and run: /devenv-doctor:environment-doctor   (if a session was already open during this script, run /reload-plugins first)"

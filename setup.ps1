@@ -100,15 +100,12 @@ if (Test-Cmd "code") {
 if (Test-Cmd "code") {
   $exts = @(
     "anthropic.claude-code",
-    "eamodio.gitlens",
-    "ms-azuretools.vscode-docker",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "ms-azuretools.vscode-docker"
   )
   foreach ($e in $exts) {
     code --install-extension $e --force | Out-Null
   }
-  Report "VS Code extensions" $true "(Claude Code, GitLens, Docker, ESLint, Prettier)"
+  Report "VS Code extensions" $true "(Claude Code, Docker)"
 } else {
   Report "VS Code extensions" $false "skipped — 'code' not found in this terminal"
 }
@@ -196,4 +193,4 @@ Write-Host "1) Open a new PowerShell window (important if anything was installed
 Write-Host "2) After logging in, run: npx claude-mem install   -> answer the prompts (pick Claude Code as the provider)"
 Write-Host "`nIf 'Bun' shows [!] above, fix that BEFORE step 2 — claude-mem installs fine without Bun and then silently does nothing, because its hooks and worker run on Bun. Install it with: irm https://bun.sh/install.ps1 | iex"
 Write-Host "`nIf 'devenv-doctor plugin' or 'mattpocock-skills' show [!] above, that's almost always because you weren't logged in yet on this run — log in, then re-run this script; it will skip what already succeeded."
-Write-Host "Once everything passes, try typing 'check my setup' in Claude Code — devenv-doctor will diagnose itself."
+Write-Host "Once everything passes, open Claude Code and run: /devenv-doctor:environment-doctor   (if a session was already open during this script, run /reload-plugins first)"
