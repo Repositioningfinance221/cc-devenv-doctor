@@ -1,0 +1,17 @@
+{
+  "name": "devenv-doctor",
+  "version": "0.2.0",
+  "description": "Environment doctor for Claude Code — checks git/Node.js/VS Code/Docker/claude-mem health and suggests exact fix commands per OS",
+  "author": {
+    "name": "Ngernthongdee Co., Ltd."
+  },
+  "homepage": "https://github.com/killernay/cc-devenv-doctor",
+  "repository": "https://github.com/killernay/cc-devenv-doctor",
+  "license": "MIT",
+  "keywords": [
+    "environment",
+    "diagnostics",
+    "setup",
+    "onboarding"
+  ]
+}

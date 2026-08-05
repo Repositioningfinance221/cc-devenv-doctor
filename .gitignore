@@ -1,0 +1,5 @@
+.DS_Store
+Thumbs.db
+
+# written by `claude plugin install --scope project` / --scope local
+.claude/settings.local.json
