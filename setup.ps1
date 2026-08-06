@@ -138,12 +138,10 @@ if (Test-Cmd "claude") {
   Report "devenv-doctor plugin" $false "skipped — Claude Code CLI not found"
 }
 
-# --- Optional: mattpocock-skills (community plugin: grilling, tdd, code-review) ---
-# Its marketplace is NOT known by default — it has to be added before the
-# plugin name '@mattpocock' can resolve to anything.
+# --- Optional: mattpocock-skills (grilling, tdd, code-review), now on Anthropic's official marketplace ---
 if (Test-Cmd "claude") {
-  claude plugin marketplace add mattpocock/skills 2>&1 | Out-Null
-  claude plugin install mattpocock-skills@mattpocock --scope $pluginScope 2>&1 | Out-Null
+  claude plugin marketplace add anthropics/claude-plugins-official 2>&1 | Out-Null
+  claude plugin install mattpocock-skills@claude-plugins-official --scope $pluginScope 2>&1 | Out-Null
   if ($LASTEXITCODE -eq 0) {
     Report "mattpocock-skills (optional)" $true "(scope: $pluginScope)"
   } else {

@@ -23,7 +23,7 @@ So: one script per OS, and a plugin that can tell you what's still broken afterw
 - **[devenv-doctor](./devenv-doctor)** — the plugin bundled in this repo. Run `/devenv-doctor:environment-doctor` in Claude Code and it runs the real checks, then tells you exactly what to fix
 - **Docker Desktop**, including WSL2 setup on Windows if it's missing
 - **VS Code** + two extensions: [Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) and Docker
-- **[mattpocock-skills](https://github.com/mattpocock/skills)** — a community plugin (grilling, TDD, code review, and more)
+- **[mattpocock-skills](https://github.com/mattpocock/skills)** — a plugin on Anthropic's official marketplace (grilling, TDD, code review, and more)
 
 ## The last two are examples, not the point
 

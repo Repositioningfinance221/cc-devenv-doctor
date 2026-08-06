@@ -23,7 +23,7 @@
 - **[devenv-doctor](./devenv-doctor)** — ปลั๊กอินที่มาพร้อม repo นี้ พิมพ์ `/devenv-doctor:environment-doctor` ใน Claude Code แล้วมันจะไล่เช็คของจริง แล้วบอกว่าต้องแก้อะไรบ้าง
 - **Docker Desktop** รวมถึงติดตั้ง WSL2 ให้บน Windows ถ้ายังไม่มี
 - **VS Code** + extension สองตัว: [Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) กับ Docker
-- **[mattpocock-skills](https://github.com/mattpocock/skills)** — ปลั๊กอินจากชุมชน (grilling, TDD, code review และอื่น ๆ)
+- **[mattpocock-skills](https://github.com/mattpocock/skills)** — ปลั๊กอินบน marketplace ทางการของ Anthropic (grilling, TDD, code review และอื่น ๆ)
 
 ## สองอย่างสุดท้ายเป็นแค่ตัวอย่าง ไม่ใช่สาระ
 
